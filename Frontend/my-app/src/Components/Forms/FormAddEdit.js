@@ -35,7 +35,7 @@ class AddEditForm extends React.Component {
           this.props.toggle()
 
         } else {
-          alert("Created")
+          alert("User Created Sucessfully")
         }
       })
       .catch(err => console.log(err))
@@ -43,33 +43,31 @@ class AddEditForm extends React.Component {
 
   submitFormEdit = e => {
     e.preventDefault()
-    fetch('http://localhost:5000/Users/'+this.state.id, {
-      method: 'patch',
+    fetch('http://localhost:5000/users/'+this.state.id, {
+      method: 'put',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        "Name": this.state.Name,
-        "age": this.state.age,
-        "email": this.state.email,
-        "number": this.state.number
+        Name: this.state.Name,
+        age: this.state.age,
+        email: this.state.email,
+        number: this.state.number
       })
     })
-      .then(response =>{
-        console.log(response)
-        response.json()
-      })
+      .then(response => response.json())
       .then(item => {
         if(Array.isArray(item)) {
           this.props.addItemToState(item[0])
           this.props.toggle()
-        } else {
 
-          console.log('failure')
+        } else {
+          alert("User Update Sucessfully")
         }
       })
       .catch(err => console.log(err))
   }
+
 
   componentDidMount(){
 
@@ -84,11 +82,11 @@ class AddEditForm extends React.Component {
       <Form onSubmit={this.props.item ? this.submitFormEdit : this.submitFormAdd}>
         <FormGroup>
           <Label for="first"> Name</Label>
-          <Input type="text" name="Name" id="Name" onChange={this.onChange} value={this.state.first === null ? '' : this.state.first} />
+          <Input type="text" name="Name" id="Name" onChange={this.onChange} value={this.state.Name === null ? '' : this.state.Name} />
         </FormGroup>
         <FormGroup>
           <Label for="last"> Age </Label>
-          <Input type="text" name="age" id="age" onChange={this.onChange} value={this.state.last === null ? '' : this.state.last}  />
+          <Input type="text" name="age" id="age" onChange={this.onChange} value={this.state.age === null ? '' : this.state.age}  />
         </FormGroup>
         <FormGroup>
           <Label for="email">Email</Label>
@@ -96,7 +94,7 @@ class AddEditForm extends React.Component {
         </FormGroup>
         <FormGroup>
           <Label for="phone">Number</Label>
-          <Input type="text" name="number" id="number" onChange={this.onChange} value={this.state.phone === null ? '' : this.state.phone}  placeholder="ex. 555-555-5555" />
+          <Input type="text" name="number" id="number" onChange={this.onChange} value={this.state.number === null ? '' : this.state.number}  />
         </FormGroup>
         <Button>Submit</Button>
       </Form>
