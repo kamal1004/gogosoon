@@ -1,0 +1,31 @@
+type Query{
+  getUsersDetails: [Users]
+  getUsersDetailsid(id:ID!):Users
+}
+
+type Mutation{
+  createUser(
+  Name:String
+  age:String
+  email:String
+  number:String
+  ):String
+
+  updateEmployee(
+  id: ID!
+  Name:String
+  age:String
+  email:String
+  number:String
+): String
+
+deleteEmployee(id: ID!): String
+}
+
+type Users{
+  id:ID!
+  Name:String
+  age:String
+  email:String
+  number:String
+}

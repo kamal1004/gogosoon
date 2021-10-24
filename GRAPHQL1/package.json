@@ -1,0 +1,23 @@
+{
+  "name": "graphql1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kamal",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^3.4.0",
+    "bcryptjs": "^2.4.3",
+    "graphql": "^15.6.1",
+    "pg": "^8.7.1",
+    "sequelize": "^6.7.0",
+    "sequelize-auto": "^0.8.5",
+    "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
